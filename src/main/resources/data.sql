@@ -1,0 +1,7 @@
+--INSERT INTO DOG (id, name, description, owner) VALUES
+--('1', 'Rex', 'A friendly dog', 'Alice'),
+--('2', 'Buddy', 'A playful dog', 'Bob'),
+--('3', 'Max', 'A loyal dog', 'Charlie'),
+--('4', 'Bella', 'A gentle dog', NULL),
+--('5', 'Lucy', 'A smart dog', NULL),
+--('6', 'Daisy', 'A hateful dog', NULL);
