@@ -11,13 +11,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.repository.ListCrudRepository;
 
+import java.util.List;
+
 @Configuration
 class AssistantConfiguration {
 
     @Bean
     ApplicationRunner assistant(ChatClient chatClient) {
         return args -> {
-            var content = chatClient.prompt("Do you know how calculator works? and what is 4 multiplied 5?").call().content();
+            var content = chatClient.prompt("Do you know of any hateful dog? Do you know how calculator works? and what is 4 multiplied 5?").call().content();
             System.out.println("Response: " + content);
         };
     }
@@ -27,13 +29,13 @@ class AssistantConfiguration {
         dogRepository.findAll().forEach(dog -> {
             var detail = new Document(("id : %s, name : %s, description : %s").formatted(
                     dog.id(), dog.name(), dog.description()));
-            //store.add(List.of(detail));
+            store.add(List.of(detail));
         });
         var system = """
                 You are a helpful assistant that answers questions about dogs available for adoption
                 in Karn Pet Adoption Agency. You can also do basic arithmetic calculations.
                 """;
-        ChatOptions options = ChatOptions.builder()
+        var options = ChatOptions.builder()
                 .model("gpt-3.5-turbo")//CHEAPEST MODEL
                 .temperature(0.7)// Control randomness
                 .maxTokens(100)//PREVENT LONG ANSWERS

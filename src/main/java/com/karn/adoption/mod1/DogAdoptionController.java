@@ -21,7 +21,7 @@ class DogAdoptionController {
 
     @PostMapping("/adopt/{id}")
     String adoptDog(@PathVariable int id, @RequestBody Map<String, String> owner) {
-        String name = owner.get("name");
+        var name = owner.get("name");
         dogAdoptionService.adoptDog(id, name);
         return "Dog adopted successfully!";
     }
